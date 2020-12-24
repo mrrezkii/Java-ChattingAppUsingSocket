@@ -3,13 +3,21 @@ import java.awt.*;
 
 public class Server extends JFrame {
 
+    JPanel jPanel1;
+
     public Server(){
+        jPanel1 = new JPanel();
+        jPanel1.setLayout(null);
+        jPanel1.setBackground(new Color(51,107,135));
+        jPanel1.setBounds(0, 0, 350, 50);
+        add(jPanel1);
+
         ImageIcon srcBackArrow = new ImageIcon(ClassLoader.getSystemResource("Drawable/leftarrow.png"));
         Image imgBackArrow = srcBackArrow.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         ImageIcon mImgBackArrow = new ImageIcon(imgBackArrow);
         JLabel lImageBackArrow = new JLabel(mImgBackArrow);
         lImageBackArrow.setBounds(5, 10, 30, 30);
-        add(lImageBackArrow);
+        jPanel1.add(lImageBackArrow);
 
 
         getContentPane().setBackground(Color.white);
