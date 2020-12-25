@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 public class Server extends JFrame {
 
     JPanel jPanel1;
+    JButton btnSend;
+    JTextField tfMsg;
 
     public Server(){
         jPanel1 = new JPanel();
@@ -35,6 +37,14 @@ public class Server extends JFrame {
         jLabel1.setBounds(125, 15, 100, 20);
         jPanel1.add(jLabel1);
 
+        tfMsg = new JTextField();
+        tfMsg.setBounds(5, 525, 260, 30);
+        tfMsg.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
+        add(tfMsg);
+
+        btnSend = new JButton("Send");
+        btnSend.setBounds(270, 525, 70, 30);
+        add(btnSend);
 
         getContentPane().setBackground(Color.white);
         setLayout(null);
