@@ -8,6 +8,7 @@ public class Server extends JFrame {
     JPanel jPanel1;
     JButton btnSend;
     JTextField tfMsg;
+    JTextArea taChat;
 
     public Server(){
         jPanel1 = new JPanel();
@@ -37,6 +38,11 @@ public class Server extends JFrame {
         jLabel1.setBounds(125, 15, 100, 20);
         jPanel1.add(jLabel1);
 
+        taChat = new JTextArea();
+        taChat.setBounds(5, 70, 335, 400);
+        taChat.setEnabled(false);
+        add(taChat);
+
         tfMsg = new JTextField();
         tfMsg.setBounds(5, 525, 260, 30);
         tfMsg.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
@@ -47,7 +53,7 @@ public class Server extends JFrame {
         btnSend.setBackground(new Color(51,107,135));
         btnSend.setForeground(Color.WHITE);
         add(btnSend);
-
+        
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setSize(350, 600);
