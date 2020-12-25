@@ -77,7 +77,10 @@ public class Server extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         new Server().setVisible(true);
+        startServer();
+    }
 
+    private static void startServer(){
         String msginput;
         try{
             ServerSocket skt = new ServerSocket(6001);

@@ -76,7 +76,10 @@ public class Client extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         new Client().setVisible(true);
+        startClient();
+    }
 
+    private static void startClient(){
         try{
             Socket s = new Socket("127.0.0.1", 6001);
             DataInputStream din = new DataInputStream(s.getInputStream());
