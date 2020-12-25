@@ -82,7 +82,7 @@ public class Client extends JFrame implements ActionListener {
 
             while(true){
                 msginput = din.readUTF();
-                taChat.setText(taChat.getText() + "\nServer : " + msginput);
+                taChat.setText(taChat.getText() + "\nServer \t: " + msginput);
                 System.out.println();
 
             }
@@ -95,7 +95,7 @@ public class Client extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         try {
             String out = tfMsg.getText();
-            taChat.setText(taChat.getText() + "\nClient : " + out);
+            taChat.setText(taChat.getText() + "\nClient \t: " + out);
             dout.writeUTF(out);
             tfMsg.setText("");
         } catch (IOException e) {
