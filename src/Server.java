@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,22 +10,15 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static javax.swing.text.DefaultCaret.ALWAYS_UPDATE;
-
 public class Server extends JFrame implements ActionListener {
 
-    JPanel jPanel1;
-    JButton btnSend;
-    JTextField tfMsg;
-    static JTextArea taChat;
+    private final JTextField tfMsg;
+    private static JTextArea taChat;
 
-    static ServerSocket skt;
-    static Socket s;
-    static DataInputStream din;
-    static DataOutputStream dout;
+    private static DataOutputStream dout;
 
     public Server(){
-        jPanel1 = new JPanel();
+        JPanel jPanel1 = new JPanel();
         jPanel1.setLayout(null);
         jPanel1.setBackground(new Color(51,107,135));
         jPanel1.setBounds(0, 0, 350, 50);
@@ -65,7 +57,7 @@ public class Server extends JFrame implements ActionListener {
         tfMsg.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
         add(tfMsg);
 
-        btnSend = new JButton("Send");
+        JButton btnSend = new JButton("Send");
         btnSend.setBounds(270, 525, 70, 30);
         btnSend.setBackground(new Color(51,107,135));
         btnSend.setForeground(Color.WHITE);
@@ -81,12 +73,12 @@ public class Server extends JFrame implements ActionListener {
     public static void main(String[] args) {
         new Server().setVisible(true);
 
-        String msginput = "";
+        String msginput;
         try{
-            skt = new ServerSocket(6001);
+            ServerSocket skt = new ServerSocket(6001);
             while(true){
-                s = skt.accept();
-                din = new DataInputStream(s.getInputStream());
+                Socket s = skt.accept();
+                DataInputStream din = new DataInputStream(s.getInputStream());
                 dout = new DataOutputStream(s.getOutputStream());
 
                 while(true){
@@ -94,10 +86,11 @@ public class Server extends JFrame implements ActionListener {
                     taChat.setText(taChat.getText() + "\nClient : " + msginput);
                     System.out.println();
                 }
-
             }
 
-        }catch(Exception e){}
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

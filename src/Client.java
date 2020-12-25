@@ -7,23 +7,17 @@ import java.awt.event.MouseEvent;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Client extends JFrame implements ActionListener {
 
-    JPanel jPanel1;
-    JButton btnSend;
-    JTextField tfMsg;
-    static JTextArea taChat;
+    private final JTextField tfMsg;
+    private static JTextArea taChat;
 
-    static ServerSocket skt;
-    static Socket s;
-    static DataInputStream din;
-    static DataOutputStream dout;
+    private static DataOutputStream dout;
 
     public Client(){
-        jPanel1 = new JPanel();
+        JPanel jPanel1 = new JPanel();
         jPanel1.setLayout(null);
         jPanel1.setBackground(new Color(51,107,135));
         jPanel1.setBounds(0, 0, 350, 50);
@@ -62,7 +56,7 @@ public class Client extends JFrame implements ActionListener {
         tfMsg.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
         add(tfMsg);
 
-        btnSend = new JButton("Send");
+        JButton btnSend = new JButton("Send");
         btnSend.setBounds(270, 525, 70, 30);
         btnSend.setBackground(new Color(51,107,135));
         btnSend.setForeground(Color.WHITE);
@@ -79,11 +73,11 @@ public class Client extends JFrame implements ActionListener {
         new Client().setVisible(true);
 
         try{
-            s = new Socket("127.0.0.1", 6001);
-            din  = new DataInputStream(s.getInputStream());
+            Socket s = new Socket("127.0.0.1", 6001);
+            DataInputStream din = new DataInputStream(s.getInputStream());
             dout = new DataOutputStream(s.getOutputStream());
 
-            String msginput = "";
+            String msginput;
 
             while(true){
                 msginput = din.readUTF();
