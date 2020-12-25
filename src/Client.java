@@ -75,7 +75,12 @@ public class Client extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Client().setVisible(true);
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Client().setVisible(true);
+            }
+        });
         startClient();
     }
 

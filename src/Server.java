@@ -76,7 +76,12 @@ public class Server extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Server().setVisible(true);
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Server().setVisible(true);
+            }
+        });
         startServer();
     }
 
