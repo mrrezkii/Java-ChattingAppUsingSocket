@@ -44,6 +44,8 @@ public class Server extends JFrame {
 
         btnSend = new JButton("Send");
         btnSend.setBounds(270, 525, 70, 30);
+        btnSend.setBackground(new Color(51,107,135));
+        btnSend.setForeground(Color.WHITE);
         add(btnSend);
 
         getContentPane().setBackground(Color.white);
