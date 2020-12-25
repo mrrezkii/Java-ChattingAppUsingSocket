@@ -13,7 +13,7 @@ import java.net.Socket;
 @SuppressWarnings("ALL")
 public class Server extends JFrame implements ActionListener {
 
-    private JTextField tfMsg;
+    private static JTextField tfMsg;
     private static JTextArea taChat;
 
     private static DataOutputStream dout;
@@ -55,7 +55,6 @@ public class Server extends JFrame implements ActionListener {
         taChat.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
         taChat.setEditable(false);
         add(taChat);
-
 
         tfMsg = new JTextField();
         tfMsg.setBounds(5, 525, 260, 30);

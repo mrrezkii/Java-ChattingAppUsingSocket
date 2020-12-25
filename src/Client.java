@@ -12,7 +12,7 @@ import java.net.Socket;
 @SuppressWarnings("ALL")
 public class Client extends JFrame implements ActionListener {
 
-    private JTextField tfMsg;
+    private static JTextField tfMsg;
     private static JTextArea taChat;
 
     private static DataOutputStream dout;
@@ -55,7 +55,6 @@ public class Client extends JFrame implements ActionListener {
         taChat.setEditable(false);
         add(taChat);
 
-
         tfMsg = new JTextField();
         tfMsg.setBounds(5, 525, 260, 30);
         tfMsg.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
@@ -91,7 +90,6 @@ public class Client extends JFrame implements ActionListener {
             dout = new DataOutputStream(s.getOutputStream());
 
             String msginput;
-
             while(true){
                 msginput = din.readUTF();
                 taChat.setText(taChat.getText() + "\nServer \t: " + msginput);
