@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,9 +10,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static javax.swing.text.DefaultCaret.ALWAYS_UPDATE;
-
-public class Server extends JFrame implements ActionListener {
+public class Client extends JFrame implements ActionListener {
 
     JPanel jPanel1;
     JButton btnSend;
@@ -25,7 +22,7 @@ public class Server extends JFrame implements ActionListener {
     static DataInputStream din;
     static DataOutputStream dout;
 
-    public Server(){
+    public Client(){
         jPanel1 = new JPanel();
         jPanel1.setLayout(null);
         jPanel1.setBackground(new Color(51,107,135));
@@ -47,7 +44,7 @@ public class Server extends JFrame implements ActionListener {
             }
         });
 
-        JLabel jLabel1 = new JLabel("Server");
+        JLabel jLabel1 = new JLabel("Client");
         jLabel1.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
         jLabel1.setForeground(Color.white);
         jLabel1.setBounds(125, 15, 100, 20);
@@ -75,36 +72,35 @@ public class Server extends JFrame implements ActionListener {
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setSize(350, 600);
-        setLocation(200, 100);
+        setLocation(800, 100);
     }
 
     public static void main(String[] args) {
-        new Server().setVisible(true);
+        new Client().setVisible(true);
 
-        String msginput = "";
         try{
-            skt = new ServerSocket(6001);
-            while(true){
-                s = skt.accept();
-                din = new DataInputStream(s.getInputStream());
-                dout = new DataOutputStream(s.getOutputStream());
+            s = new Socket("127.0.0.1", 6001);
+            din  = new DataInputStream(s.getInputStream());
+            dout = new DataOutputStream(s.getOutputStream());
 
-                while(true){
-                    msginput = din.readUTF();
-                    taChat.setText(taChat.getText() + "\nClient : " + msginput);
-                    System.out.println();
-                }
+            String msginput = "";
+
+            while(true){
+                msginput = din.readUTF();
+                taChat.setText(taChat.getText() + "\nServer : " + msginput);
+                System.out.println();
 
             }
-
-        }catch(Exception e){}
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         try {
             String out = tfMsg.getText();
-            taChat.setText(taChat.getText() + "\nServer : " + out);
+            taChat.setText(taChat.getText() + "\nClient : " + out);
             dout.writeUTF(out);
             tfMsg.setText("");
         } catch (IOException e) {
