@@ -12,12 +12,16 @@ import java.net.Socket;
 @SuppressWarnings("ALL")
 public class Client extends JFrame implements ActionListener {
 
-    private final JTextField tfMsg;
+    private JTextField tfMsg;
     private static JTextArea taChat;
 
     private static DataOutputStream dout;
 
     public Client(){
+        initComponent();
+    }
+
+    private void initComponent(){
         JPanel jPanel1 = new JPanel();
         jPanel1.setLayout(null);
         jPanel1.setBackground(new Color(51,107,135));
@@ -63,7 +67,7 @@ public class Client extends JFrame implements ActionListener {
         btnSend.setForeground(Color.WHITE);
         btnSend.addActionListener(this);
         add(btnSend);
-        
+
         getContentPane().setBackground(Color.white);
         setLayout(null);
         setSize(350, 600);
