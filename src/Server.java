@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+@SuppressWarnings("ALL")
 public class Server extends JFrame implements ActionListener {
 
     private final JTextField tfMsg;

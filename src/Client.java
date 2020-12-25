@@ -9,6 +9,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+@SuppressWarnings("ALL")
 public class Client extends JFrame implements ActionListener {
 
     private final JTextField tfMsg;
