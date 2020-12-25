@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Server extends JFrame {
 
@@ -18,6 +20,20 @@ public class Server extends JFrame {
         JLabel lImageBackArrow = new JLabel(mImgBackArrow);
         lImageBackArrow.setBounds(5, 10, 30, 30);
         jPanel1.add(lImageBackArrow);
+
+        lImageBackArrow.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                super.mouseClicked(mouseEvent);
+                System.exit(0);
+            }
+        });
+
+        JLabel jLabel1 = new JLabel("Server");
+        jLabel1.setFont(new Font("SAN_SERIF", Font.PLAIN, 20));
+        jLabel1.setForeground(Color.white);
+        jLabel1.setBounds(125, 15, 100, 20);
+        jPanel1.add(jLabel1);
 
 
         getContentPane().setBackground(Color.white);
