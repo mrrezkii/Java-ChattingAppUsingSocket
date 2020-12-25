@@ -1,9 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Server extends JFrame {
+public class Server extends JFrame implements ActionListener {
 
     JPanel jPanel1;
     JButton btnSend;
@@ -40,7 +42,7 @@ public class Server extends JFrame {
 
         taChat = new JTextArea();
         taChat.setBounds(5, 70, 335, 400);
-        taChat.setEnabled(false);
+        taChat.setEditable(false);
         add(taChat);
 
         tfMsg = new JTextField();
@@ -52,6 +54,7 @@ public class Server extends JFrame {
         btnSend.setBounds(270, 525, 70, 30);
         btnSend.setBackground(new Color(51,107,135));
         btnSend.setForeground(Color.WHITE);
+        btnSend.addActionListener(this);
         add(btnSend);
         
         getContentPane().setBackground(Color.white);
@@ -62,5 +65,12 @@ public class Server extends JFrame {
 
     public static void main(String[] args) {
         new Server().setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent actionEvent) {
+        String out = tfMsg.getText();
+        taChat.setText(taChat.getText() + "\n" + out);
+        tfMsg.setText("");
     }
 }
